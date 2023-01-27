@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
+import { Category } from '../categories/category.entity';
 
 @Entity()
 export class Project {
@@ -13,4 +14,7 @@ export class Project {
 
   @Column({ nullable: true })
   createdAt: Date = new Date();
+
+  @ManyToOne(() => Category, (category) => category.projects)
+  category: Category;
 }

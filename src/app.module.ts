@@ -6,9 +6,11 @@ import { AuthModule } from './features/auth/auth.module';
 import { AccountModule } from './features/account/account.module';
 import { ProjectsModule } from './features/projects/projects.module';
 import { EventsModule } from './features/events/events.module';
+import { CategoriesModule } from './features/categories/categories.module';
 
 import { Project } from './features/projects/project.entity';
 import { Event } from './features/events/event.entity';
+import { Category } from './features/categories/category.entity';
 
 @Module({
   imports: [
@@ -18,7 +20,7 @@ import { Event } from './features/events/event.entity';
         return {
           type: 'sqlite',
           database: config.get<string>('DB_NAME'),
-          entities: [Project, Event],
+          entities: [Project, Event, Category],
           synchronize: true,
         };
       },
@@ -31,6 +33,7 @@ import { Event } from './features/events/event.entity';
     AccountModule,
     ProjectsModule,
     EventsModule,
+    CategoriesModule,
   ],
   controllers: [],
   providers: [],

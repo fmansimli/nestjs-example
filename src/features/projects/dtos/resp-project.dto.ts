@@ -9,4 +9,7 @@ export class RespProjectDto {
 
   @Expose()
   createdAt: string;
+
+  @Expose()
+  category: number;
 }
