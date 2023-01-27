@@ -11,6 +11,7 @@ import { RespProjectDto } from './dtos/resp-project.dto';
 export class ProjectsController {
   constructor(private projectsService: ProjectsService) {}
 
+  @Serialize(RespProjectDto)
   @Get()
   async getAll(@Query('title') title: string) {
     return await this.projectsService.find({ title });
@@ -18,8 +19,9 @@ export class ProjectsController {
 
   @Serialize(RespProjectDto)
   @Get(':id')
-  getById(@Param('id') id: number) {
-    return this.projectsService.findById(id);
+  async getById(@Param('id') id: number) {
+    const project = await this.projectsService.findById(id);
+    return project;
   }
 
   @Post()

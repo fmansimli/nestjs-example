@@ -9,9 +9,10 @@ export class SerializeInterceptor implements NestInterceptor {
   intercept(context: ExecutionContext, next: CallHandler<any>): Observable<any> {
     return next.handle().pipe(
       map((data: any) => {
-        return plainToInstance(this.dto, data, {
+        const serialized = plainToInstance(this.dto, data, {
           excludeExtraneousValues: true,
         });
+        return { body: serialized, meta: { url: '/api/v1/' } };
       }),
     );
   }
