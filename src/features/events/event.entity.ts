@@ -1,5 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, ManyToMany } from 'typeorm';
 import { Category } from '../categories/category.entity';
+import { Team } from '../teams/team.entity';
 
 @Entity()
 export class Event {
@@ -17,4 +18,7 @@ export class Event {
 
   @ManyToOne(() => Category, (category) => category.events)
   category: Category;
+
+  @ManyToMany(() => Team, (team) => team.events)
+  teams: Team[];
 }

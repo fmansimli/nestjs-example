@@ -1,16 +1,18 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 import { AuthModule } from './features/auth/auth.module';
 import { AccountModule } from './features/account/account.module';
 import { ProjectsModule } from './features/projects/projects.module';
 import { EventsModule } from './features/events/events.module';
 import { CategoriesModule } from './features/categories/categories.module';
+import { TeamsModule } from './features/teams/teams.module';
 
 import { Project } from './features/projects/project.entity';
 import { Event } from './features/events/event.entity';
 import { Category } from './features/categories/category.entity';
+import { Team } from './features/teams/team.entity';
 
 @Module({
   imports: [
@@ -20,7 +22,7 @@ import { Category } from './features/categories/category.entity';
         return {
           type: 'sqlite',
           database: config.get<string>('DB_NAME'),
-          entities: [Project, Event, Category],
+          entities: [Project, Event, Category, Team],
           synchronize: true,
         };
       },
@@ -34,6 +36,7 @@ import { Category } from './features/categories/category.entity';
     ProjectsModule,
     EventsModule,
     CategoriesModule,
+    TeamsModule,
   ],
   controllers: [],
   providers: [],
