@@ -1,8 +1,11 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from '@nestjs/common';
+import { Serialize } from 'src/decorators/serialize.decorator';
+
 import { ProjectsService } from './projects.service';
 
 import { CreateProjectDto } from './dtos/create.dto';
 import { UpdateProjectDto } from './dtos/update.dto';
+import { RespProjectDto } from './dtos/resp-project.dto';
 
 @Controller('projects')
 export class ProjectsController {
@@ -13,6 +16,7 @@ export class ProjectsController {
     return await this.projectsService.find({ title });
   }
 
+  @Serialize(RespProjectDto)
   @Get(':id')
   getById(@Param('id') id: number) {
     return this.projectsService.findById(id);
