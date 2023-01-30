@@ -12,8 +12,8 @@ export class UsersService {
     return this.repo.find({ where: query });
   }
 
-  findById(id: number) {
-    return this.repo.find({ where: { id } });
+  async findById(id: number) {
+    return { id, name: 'test' };
   }
 
   save(body: Partial<User>) {
