@@ -26,8 +26,6 @@ export class ProjectsController {
 
   @Post()
   async createProject(@Body() body: CreateProjectDto) {
-    console.log(body);
-
     const data = await this.projectsService.save(body);
     return data;
   }

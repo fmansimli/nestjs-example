@@ -21,4 +21,8 @@ export class AuthService {
 
     return { email, password: hashed, jwt, type: 'register' };
   }
+
+  async test(data?: any) {
+    return Promise.resolve(data || { test: 'test' });
+  }
 }
