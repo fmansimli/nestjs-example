@@ -24,6 +24,7 @@ import { Team } from './features/teams/team.entity';
           database: config.get<string>('DB_NAME'),
           entities: [Project, Event, Category, Team],
           synchronize: true,
+          migrationsRun: true,
         };
       },
     }),
