@@ -10,12 +10,6 @@ import { CategoriesModule } from './features/categories/categories.module';
 import { TeamsModule } from './features/teams/teams.module';
 import { UsersModule } from './features/users/users.module';
 
-import { Project } from './features/projects/project.entity';
-import { Event } from './features/events/event.entity';
-import { Category } from './features/categories/category.entity';
-import { Team } from './features/teams/team.entity';
-import { User } from './features/users/user.entity';
-
 @Module({
   imports: [
     TypeOrmModule.forRootAsync({
@@ -24,7 +18,7 @@ import { User } from './features/users/user.entity';
         return {
           type: 'sqlite',
           database: config.get<string>('DB_NAME'),
-          entities: [Project, Event, Category, Team, User],
+          autoLoadEntities: true,
           synchronize: true,
           migrationsRun: true,
         };
