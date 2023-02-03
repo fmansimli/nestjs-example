@@ -9,6 +9,7 @@ import { EventsModule } from './features/events/events.module';
 import { CategoriesModule } from './features/categories/categories.module';
 import { TeamsModule } from './features/teams/teams.module';
 import { UsersModule } from './features/users/users.module';
+import { TagsModule } from './features/tags/tags.module';
 
 @Module({
   imports: [
@@ -35,6 +36,7 @@ import { UsersModule } from './features/users/users.module';
     CategoriesModule,
     TeamsModule,
     UsersModule,
+    TagsModule,
   ],
 })
 export class AppModule {}
